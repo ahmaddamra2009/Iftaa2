@@ -1,0 +1,32 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "ViewEmp";
+}
+
+<h1>ViewEmp</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td><label asp-for="EmployeeId" class="col-form-label"></label> </td>
+        <td>@Model.EmployeeId</td>
+    </tr>
+    <tr>
+        <td><label asp-for="EmployeeName" class="col-form-label"></label> </td>
+        <td>@Model.EmployeeName</td>
+    </tr>
+    <tr>
+        <td><label asp-for="Email" class="col-form-label"></label> </td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td><label asp-for="Gender" class="col-form-label"></label> </td>
+        <td>@Model.Gender</td>
+    </tr>
+    <tr>
+        <td><label asp-for="HireDate" class="col-form-label"></label> </td>
+        <td>@Model.HireDate.ToShortDateString()</td>
+    </tr>
+
+</table>
+
+<a href="~/Employees/Index">Back to list</a>

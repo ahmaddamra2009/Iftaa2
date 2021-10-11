@@ -1,0 +1,63 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Employee</h1>
+
+@using (Html.BeginForm("Create", "Employees", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <tr>
+            <td><label asp-for="EmployeeName"></label> </td>
+            <td>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span class="text-danger" asp-validation-for="EmployeeName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email"></label> </td>
+            <td>
+                <input asp-for="Email" class="form-control" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="HireDate"></label> </td>
+            <td>
+                <input asp-for="HireDate" class="form-control" />
+                <span class="text-danger" asp-validation-for="HireDate"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Salary"></label> </td>
+            <td>
+                <input asp-for="Salary" class="form-control" />
+                <span class="text-danger" asp-validation-for="Salary"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Gender"></label> </td>
+            <td>
+                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                    <option selected="selected" value="-1">--- Select Gender ---</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Gender"></span>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="name" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-warning">Cancel</a>
+            </td>
+        </tr>
+
+    </table>
+}
+
+@section personalScripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

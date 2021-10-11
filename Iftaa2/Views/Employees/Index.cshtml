@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (Model.Any())
+{
+
+    <a asp-action="Create" asp-controller="Employees" class="btn btn-outline-success">Create Employee</a>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.EmployeeName)</td>
+            <td>@Html.DisplayNameFor(model => model.Email)</td>
+            <td>@Html.DisplayNameFor(model => model.Gender)</td>
+            <td>@Html.DisplayNameFor(model => model.HireDate)</td>
+            <td></td>
+        </tr>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmployeeName</td>
+                <td>@emp.Email</td>
+                <td>@emp.Gender</td>
+                <td>@emp.HireDate.ToShortDateString()</td>
+                <td>
+                    @Html.ActionLink("View", "ViewEmp", "Employees", new { id = emp.EmployeeId }, new { @class = "btn btn-outline-primary btn-sm" })
+                    <a asp-action="Delete" asp-controller="Employees" asp-route-id="@emp.EmployeeId" class="btn btn-outline-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-controller="Employees" asp-route-id="@emp.EmployeeId" class="btn btn-outline-warning btn-sm">Edit</a>
+
+                </td>
+            </tr>
+
+        }
+    </table>
+}
+else
+{
+<div class="text-center text-danger">
+    No Data <br />
+    Click here to create new Employee  <br /><a asp-action="Create" asp-controller="Employees" class="btn btn-outline-success">Create Employee</a>
+</div>
+}
